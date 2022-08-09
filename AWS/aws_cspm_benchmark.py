@@ -62,8 +62,10 @@ totals = {
 }
 GRAND_TOTAL_RESOURCES = 0
 ec2 = boto3.client("ec2")
-response = ec2.describe_regions()
-for region in response["Regions"]:
+response = [{
+"RegionName": "us-east-1"
+}]
+for region in response:
     RegionName = region["RegionName"]
     if RegionName not in filtered:
         if RegionName in include or "all" in include:
